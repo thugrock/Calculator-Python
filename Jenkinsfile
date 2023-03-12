@@ -12,6 +12,13 @@ pipeline {
                 sh 'pip install -r requirements.txt'
             }
         }
-
+        stage('Build docker image'){
+            agent any
+            steps{
+                sh 'apt-get install docker-compose'
+                sh 'apt-get install docker.io'
+                sh 'docker-compose up -d'
+            }
+        }
     }
 }
