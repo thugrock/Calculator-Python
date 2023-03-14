@@ -23,7 +23,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
                 sh "sudo docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-                sh "sudo docker tag calculator2_app thugrock/calculator"
+                sh "sudo docker tag calci thugrock/calculator"
                 sh 'sudo docker push thugrock/calculator'
                 }
             }
