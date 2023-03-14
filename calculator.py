@@ -1,5 +1,10 @@
 import tkinter as tk
 import math
+import os
+
+if os.environ.get('DISPLAY','') == '':
+    print('no display found. Using :0.0')
+    os.environ.__setitem__('DISPLAY', ':0.0')
     
 root = tk.Tk()
 root.title('Calculator')
