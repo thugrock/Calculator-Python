@@ -1,10 +1,15 @@
-FROM python:3.7
+# Slim version of Python
+FROM python:3.8.12-slim
 
 COPY . /app
 
 WORKDIR /app
 
-RUN pip install -r requirements.txt
-EXPOSE 5000
+# Download Package Information
+RUN apt-get update -y
 
-CMD ["python3", "calculator.py"]
+# Install Tkinter
+RUN apt-get install tk -y
+
+RUN pip install -r requirements.txt
+

@@ -6,6 +6,3 @@ services:
    context: .
    dockerfile: Dockerfile
   container_name: app
-  ports:
-   - "5000:5000"
-

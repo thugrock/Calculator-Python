@@ -15,16 +15,16 @@ pipeline {
         stage('Build docker image'){
             agent any
             steps{
-                sh 'sudo docker-compose up -d'
+                sh 'docker-compose up -d'
             }
         }
         stage('Docker Push') {
             agent any
             steps {
                 withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-                sh "sudo docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-                sh "sudo docker tag calculator2_app thugrock/calculator"
-                sh 'sudo docker push thugrock/calculator'
+                sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+                sh "docker tag calculator2_app thugrock/calculator"
+                sh 'docker push thugrock/calculator'
                 }
             }
         }
